@@ -93,6 +93,13 @@ html { scroll-behavior: smooth; }
   border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
+/* ── Services stack ── */
+.services-bento {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 /* ── Buttons ── */
 .btn-gradient {
   background: linear-gradient(135deg, #0EA5E9, #7C3AED);
