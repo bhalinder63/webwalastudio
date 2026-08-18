@@ -28,7 +28,7 @@ export default function ContactModal({
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [plan, setPlan] = useState(
-    prefilledPlan || "Professional Plan (₹28,000)",
+    prefilledPlan || "Professional Plan (₹28,000 / $349)",
   );
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -43,7 +43,7 @@ export default function ContactModal({
       setName("");
       setEmail("");
       setPhone("");
-      setPlan(prefilledPlan || "Professional Plan (₹28,000)");
+      setPlan(prefilledPlan || "Professional Plan (₹28,000 / $349)");
       setMessage("");
       setSubmitted(false);
       setSending(false);
@@ -265,14 +265,14 @@ export default function ContactModal({
                         onChange={(e) => setPlan(e.target.value)}
                         className="w-full px-4 py-2.5 rounded-lg bg-white border border-brand-navy/15 text-sm font-semibold focus:outline-none focus:border-primary transition-all font-sans"
                       >
-                        <option value="Starter Plan (₹12,000)">
-                          Starter Plan (₹12,000)
+                        <option value="Starter Plan (₹12,000 / $149)">
+                          Starter Plan (₹12,000 / $149)
                         </option>
-                        <option value="Professional Plan (₹28,000)">
-                          Professional Plan (₹28,000)
+                        <option value="Professional Plan (₹28,000 / $349)">
+                          Professional Plan (₹28,000 / $349)
                         </option>
-                        <option value="Business Pro Plan (₹55,000)">
-                          Business Pro Plan (₹55,000)
+                        <option value="Business Pro Plan (₹55,000 / $699)">
+                          Business Pro Plan (₹55,000 / $699)
                         </option>
                         <option value="General Query & Consultation">
                           General Query & Consultation

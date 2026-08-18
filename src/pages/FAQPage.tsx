@@ -38,8 +38,8 @@ const faqs = [
     a: "We work with schools, clinics, restaurants, retailers, manufacturers, consultants, NGOs, and more. If you have a business and need a professional online presence, we can help — regardless of industry.",
   },
   {
-    q: "Do you work with clients outside Delhi NCR?",
-    a: "Yes. We work remotely with clients across India. Everything — from the briefing to the final delivery — is handled online via WhatsApp, email, and video calls. Location is no barrier.",
+    q: "Do you work with international clients (USA, Canada, UAE)?",
+    a: "Yes. Alongside clients across India, we regularly build for businesses in the USA, Canada, and UAE. Everything — briefing, design reviews, and delivery — is handled remotely over email and video calls, with pricing available in both INR and USD. We work async-friendly across time zones, so distance is never a blocker.",
   },
   {
     q: "What happens after the website goes live?",
@@ -135,7 +135,7 @@ export default function FAQPage() {
 
     document.title = "FAQs | Webwala Studio";
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", "Got questions about our web design services? Find answers about pricing, timelines, maintenance, and more. Webwala Studio builds professional websites for NCR businesses in 7 days starting at ₹12,000.");
+    if (meta) meta.setAttribute("content", "Got questions about our web design services? Find answers about pricing, timelines, maintenance, and more. Webwala Studio builds professional websites for clients in India, USA, Canada & UAE in 7 days, starting at ₹12,000 / $149.");
 
     return () => {
       document.title = prevTitle;
