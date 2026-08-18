@@ -104,7 +104,7 @@ export default function App() {
                 className="font-sans mb-10 max-w-xl leading-relaxed font-semibold"
                 style={{ fontSize: 16, color: "#4B5563" }}
               >
-                Join businesses across NCR that upgraded their digital presence with Webwala Studio and started seeing real results fast.
+                Join businesses across India, the USA, Canada & UAE that upgraded their digital presence with Webwala Studio and started seeing real results fast.
               </p>
               <button
                 onClick={() => handleOpenContact("Final CTA - Ready to Go Live")}

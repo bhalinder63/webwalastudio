@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import type { LucideIcon } from "lucide-react";
 import {
   School, HeartPulse, Briefcase, Scissors,
-  Coffee, ShoppingBag,
+  Coffee, ShoppingBag, Building2, Scale, Calculator,
 } from "lucide-react";
 
 interface ServiceItem {
@@ -53,6 +53,30 @@ const services: ServiceItem[] = [
     description: "Digital menus, reservation forms, and vibrant photo galleries.",
     icon: Coffee,
     features: ["Interactive Contactless Menu", "Reservation Slot Checker", "Special Offer Promos", "Visual Chef Gallery"],
+    size: "sm",
+  },
+  {
+    id: "realestate",
+    title: "Real Estate & Builders",
+    description: "Property listings, EMI calculators, and virtual tours built for serious buyers.",
+    icon: Building2,
+    features: ["Property Listing Grid", "EMI / Loan Calculator", "Virtual Tour Embed", "Site Visit Booking Form"],
+    size: "sm",
+  },
+  {
+    id: "legal",
+    title: "Law Firms",
+    description: "Practice area pages, attorney profiles, and confidential case inquiry forms that build credibility.",
+    icon: Scale,
+    features: ["Practice Area Pages", "Attorney Profile Directory", "Confidential Case Inquiry Form", "Legal Resource Blog"],
+    size: "sm",
+  },
+  {
+    id: "accounting",
+    title: "CA & Accounting Firms",
+    description: "Service breakdowns, secure document uploads, and appointment booking for tax season traffic.",
+    icon: Calculator,
+    features: ["Secure Document Upload Portal", "Tax Filing Appointment Booking", "Service Fee Breakdown", "GST / Compliance Resource Hub"],
     size: "sm",
   },
   {

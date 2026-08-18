@@ -433,10 +433,10 @@ export default function Hero({ onOpenContact }: HeroProps) {
       className="relative overflow-hidden"
       style={{
         background: "linear-gradient(160deg, #EFF6FF 0%, #F5F3FF 50%, #EDE9FE 100%)",
-        padding: "120px 5% 100px",
+        padding: "120px 5% 56px",
         minHeight: "100dvh",
         display: "flex",
-        alignItems: "center",
+        flexDirection: "column",
       }}
     >
       {/* Dot grid */}
@@ -453,8 +453,8 @@ export default function Hero({ onOpenContact }: HeroProps) {
         <div className="morph-blob-c" style={{ width: "100%", height: "100%", background: "radial-gradient(circle at 40% 35%, rgba(244,114,182,0.13) 0%, rgba(56,189,248,0.09) 50%, transparent 75%)" }} />
       </div>
 
-      <div className="w-full max-w-[1200px] mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="w-full max-w-[1200px] mx-auto relative z-10" style={{ flex: 1, display: "flex", alignItems: "center" }}>
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center" style={{ width: "100%" }}>
 
           {/* ── Left copy ── */}
           <div className="hero-copy">
@@ -648,8 +648,32 @@ export default function Hero({ onOpenContact }: HeroProps) {
         </div>
       </div>
 
+      {/* Trust strip */}
+      <div
+        className="w-full max-w-[1200px] mx-auto relative z-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-y sm:divide-y-0 sm:divide-x divide-[var(--border)]"
+        style={{ borderTop: "1px solid var(--border)", marginTop: 48, paddingTop: 28 }}
+      >
+        {[
+          { title: "Modern & Responsive Designs", description: "Looks great on all devices." },
+          { title: "Fast Loading Websites", description: "Better user experience & higher conversions." },
+          { title: "SEO Friendly Structure", description: "Built to rank higher on Google." },
+          { title: "Secure & Reliable", description: "Your website and data are always protected." },
+          { title: "Clear Communication & On-Time Delivery", description: "We keep you updated at every step." },
+          { title: "Affordable Pricing for International Clients", description: "Great quality at fair and transparent rates." },
+        ].map((item) => (
+          <div key={item.title} className="text-center" style={{ padding: "12px 14px" }}>
+            <h3 className="font-display font-extrabold" style={{ fontSize: 13, color: "var(--text-dark)", lineHeight: 1.3, marginBottom: 4 }}>
+              {item.title}
+            </h3>
+            <p className="font-sans" style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.5 }}>
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
       {/* Scroll indicator */}
-      <div className="hero-scroll-hint scroll-bounce absolute pointer-events-none" style={{ bottom: 28, left: "50%" }}>
+      <div className="hero-scroll-hint scroll-bounce" style={{ display: "flex", justifyContent: "center", marginTop: 20, pointerEvents: "none" }}>
         <ChevronDown className="h-5 w-5" style={{ color: "rgba(124,58,237,0.35)" }} />
       </div>
     </section>
