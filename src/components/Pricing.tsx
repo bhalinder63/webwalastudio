@@ -12,6 +12,7 @@ export default function Pricing({ onOpenContact }: PricingProps) {
       name: "Starter",
       description: "Perfect for new small businesses",
       price: "₹12,000",
+      priceUSD: "$149",
       features: [
         { name: "Up to 5 Pages", active: true },
         { name: "Mobile Responsive", active: true },
@@ -27,6 +28,7 @@ export default function Pricing({ onOpenContact }: PricingProps) {
       name: "Professional",
       description: "For growing clinics, schools, etc.",
       price: "₹28,000",
+      priceUSD: "$349",
       features: [
         { name: "Up to 15 Pages", active: true },
         { name: "Mobile Responsive", active: true },
@@ -42,6 +44,7 @@ export default function Pricing({ onOpenContact }: PricingProps) {
       name: "Business Pro",
       description: "Full custom build & E-commerce",
       price: "₹55,000",
+      priceUSD: "$699",
       features: [
         { name: "Unlimited Pages", active: true },
         { name: "E-Commerce Setup", active: true },
@@ -160,6 +163,7 @@ function CardContent({
     name: string;
     description: string;
     price: string;
+    priceUSD: string;
     features: { name: string; active: boolean }[];
     featured: boolean;
     ctaText: string;
@@ -207,6 +211,12 @@ function CardContent({
             }}
           >
             {plan.price}
+          </span>
+          <span
+            className="font-sans font-semibold block mt-1"
+            style={{ fontSize: 13, color: plan.featured ? "rgba(255,255,255,0.5)" : "#6B7280" }}
+          >
+            ≈ {plan.priceUSD} USD
           </span>
         </div>
 
@@ -258,7 +268,7 @@ function CardContent({
 
       {/* CTA button */}
       <button
-        onClick={() => onOpenContact(`${plan.name} (${plan.price})`)}
+        onClick={() => onOpenContact(`${plan.name} (${plan.price} / ${plan.priceUSD})`)}
         className="btn-shine w-full font-sans font-bold cursor-pointer transition-all duration-[250ms]"
         style={
           plan.featured

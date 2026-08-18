@@ -28,8 +28,8 @@ const faqs = [
     a: "We work with schools, clinics, restaurants, retailers, manufacturers, consultants, NGOs, and more. If you have a business and need a professional online presence, we can help — regardless of industry.",
   },
   {
-    q: "Do you work with clients outside Delhi NCR?",
-    a: "Yes. We work remotely with clients across India. Everything — from the briefing to the final delivery — is handled online via WhatsApp, email, and video calls. Location is no barrier.",
+    q: "Do you work with international clients (USA, Canada, UAE)?",
+    a: "Yes. Alongside clients across India, we regularly build for businesses in the USA, Canada, and UAE. Everything — briefing, design reviews, and delivery — is handled remotely over email and video calls, with pricing available in both INR and USD. We work async-friendly across time zones, so distance is never a blocker.",
   },
 ];
 
