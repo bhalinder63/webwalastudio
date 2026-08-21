@@ -98,7 +98,6 @@ function BrowserFrame({ screenshot, domain, accentFrom, accentTo }: {
         <img
           src={screenshot}
           alt={`${domain} website screenshot`}
-          loading="lazy"
           decoding="async"
           className="scroll-portfolio"
           style={{
