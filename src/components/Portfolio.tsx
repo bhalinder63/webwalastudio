@@ -97,7 +97,9 @@ function BrowserFrame({ screenshot, domain, accentFrom, accentTo }: {
       <div style={{ height: 340, overflow: "hidden", background: "#f8f8f8" }}>
         <img
           src={screenshot}
-          alt={domain}
+          alt={`${domain} website screenshot`}
+          loading="lazy"
+          decoding="async"
           className="scroll-portfolio"
           style={{
             width: "100%",

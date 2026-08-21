@@ -2,10 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Zap, MapPin, Phone, Mail, Link as LinkIcon, Share2, Instagram, ArrowUp } from "lucide-react";
-
-interface FooterProps {
-  onOpenContact: (prefilledService?: string) => void;
-}
+import { services } from "../data/services";
+import { locations } from "../data/locations";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -16,7 +14,7 @@ const fadeUp = {
   }),
 };
 
-export default function Footer({ onOpenContact }: FooterProps) {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [copied, setCopied] = useState(false);
 
@@ -50,7 +48,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
       <div className="glass-sphere-blue orb-float-2 absolute pointer-events-none" style={{ bottom: "-10%", left: "-5%", width: 280, height: 280 }} />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
+        <div className="grid md:grid-cols-4 gap-12 mb-16">
 
           {/* ── Logo & Intro ── */}
           <motion.div
@@ -137,24 +135,71 @@ export default function Footer({ onOpenContact }: FooterProps) {
           >
             <h4 className="font-sans text-xs font-bold uppercase tracking-widest text-white/50 mb-6">Services</h4>
             <ul className="space-y-4">
-              {[
-                { name: "School Websites", spec: "Schools & Institutes Website Consult" },
-                { name: "Clinic Portals", spec: "Medical & Clinic Portal Consult" },
-                { name: "Business Portfolios", spec: "Corporate Brand Portfolio Consult" },
-                { name: "E-commerce Stores", spec: "E-Commerce App Store Consult" },
-              ].map((serv, index) => (
-                <li key={index}>
-                  <button
-                    onClick={() => onOpenContact(serv.spec)}
-                    className="group flex items-center gap-1.5 text-bg-cream/75 hover:text-primary transition-colors font-sans text-sm font-semibold border-none bg-transparent cursor-pointer"
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    to={`/services/${service.slug}`}
+                    className="group flex items-center gap-1.5 text-bg-cream/75 hover:text-primary transition-colors font-sans text-sm font-semibold"
+                    style={{ textDecoration: "none" }}
                   >
-                    {serv.name}
+                    {service.title}
                     <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-[-4px] group-hover:translate-x-0" style={{ display: "inline-block" }}>
                       →
                     </span>
-                  </button>
+                  </Link>
                 </li>
               ))}
+            </ul>
+          </motion.div>
+
+          {/* ── Locations ── */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-40px" }}
+            custom={2}
+          >
+            <h4 className="font-sans text-xs font-bold uppercase tracking-widest text-white/50 mb-6">Locations</h4>
+            <ul className="space-y-4">
+              {locations.map((location) => (
+                <li key={location.slug}>
+                  <Link
+                    to={`/locations/${location.slug}`}
+                    className="group flex items-center gap-1.5 text-bg-cream/75 hover:text-primary transition-colors font-sans text-sm font-semibold"
+                    style={{ textDecoration: "none" }}
+                  >
+                    {location.cityName}
+                    <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-[-4px] group-hover:translate-x-0" style={{ display: "inline-block" }}>
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  to="/blog"
+                  className="group flex items-center gap-1.5 text-bg-cream/75 hover:text-primary transition-colors font-sans text-sm font-semibold"
+                  style={{ textDecoration: "none" }}
+                >
+                  Blog
+                  <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-[-4px] group-hover:translate-x-0" style={{ display: "inline-block" }}>
+                    →
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/faq"
+                  className="group flex items-center gap-1.5 text-bg-cream/75 hover:text-primary transition-colors font-sans text-sm font-semibold"
+                  style={{ textDecoration: "none" }}
+                >
+                  FAQs
+                  <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-[-4px] group-hover:translate-x-0" style={{ display: "inline-block" }}>
+                    →
+                  </span>
+                </Link>
+              </li>
             </ul>
           </motion.div>
 
@@ -164,7 +209,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-40px" }}
-            custom={2}
+            custom={3}
           >
             <h4 className="font-sans text-xs font-bold uppercase tracking-widest text-white/50 mb-6">Contact</h4>
             <ul className="space-y-4">
@@ -195,7 +240,7 @@ export default function Footer({ onOpenContact }: FooterProps) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-20px" }}
-          custom={3}
+          custom={4}
           className="border-t border-bg-cream/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="font-sans text-xs text-bg-cream/50">
