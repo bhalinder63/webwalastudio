@@ -6,14 +6,10 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
-import { fileURLToPath } from "url";
 import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
 
 dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 async function startServer() {
   const app = express();
@@ -191,6 +187,19 @@ async function startServer() {
   } else {
     // Serving Static files in production
     const distPath = path.join(process.cwd(), "dist");
+
+    // Serve prerendered per-route HTML (e.g. dist/faq/index.html) before
+    // express.static, which would otherwise redirect "/faq" -> "/faq/".
+    app.get("*", (req, res, next) => {
+      if (req.path === "/") return next();
+      const prerenderedPath = path.join(distPath, req.path, "index.html");
+      if (fs.existsSync(prerenderedPath)) {
+        res.sendFile(prerenderedPath);
+        return;
+      }
+      next();
+    });
+
     app.use(express.static(distPath));
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));

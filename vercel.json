@@ -1,5 +1,12 @@
 {
   "rewrites": [
+    { "source": "/faq", "destination": "/faq/index.html" },
+    { "source": "/services", "destination": "/services/index.html" },
+    { "source": "/services/:slug", "destination": "/services/:slug/index.html" },
+    { "source": "/locations", "destination": "/locations/index.html" },
+    { "source": "/locations/:slug", "destination": "/locations/:slug/index.html" },
+    { "source": "/blog", "destination": "/blog/index.html" },
+    { "source": "/blog/:slug", "destination": "/blog/:slug/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

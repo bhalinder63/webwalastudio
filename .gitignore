@@ -7,3 +7,6 @@ coverage/
 .env*
 !.env.example
 .env.local
+
+# Generated from content/blog/*.md by scripts/generate-blog-data.ts
+src/data/blog-posts.generated.ts

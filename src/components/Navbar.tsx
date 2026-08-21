@@ -2,14 +2,17 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { CalendarCheck, Menu, X } from "lucide-react";
+import { routes, isActiveRoute } from "../routes";
 
 interface NavbarProps {
   onOpenContact: () => void;
 }
 
+const topLevelLinks = routes.filter((route) => route.navVisible);
+
 export default function Navbar({ onOpenContact }: NavbarProps) {
   const { pathname } = useLocation();
-  const onFaqPage = pathname === "/faq";
+  const onHomepage = pathname === "/";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
@@ -90,12 +93,12 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                 style={{
                   fontSize: 14,
                   fontWeight: 600,
-                  color: !onFaqPage && activeSection === id ? "#7C3AED" : "#4B5563",
+                  color: onHomepage && activeSection === id ? "#7C3AED" : "#4B5563",
                   textDecoration: "none",
                 }}
               >
                 {label}
-                {!onFaqPage && activeSection === id && (
+                {onHomepage && activeSection === id && (
                   <motion.span
                     layoutId="nav-underline"
                     className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
@@ -105,21 +108,27 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
                 )}
               </Link>
             ))}
-            <Link
-              to="/faq"
-              className="relative pb-1 transition-colors"
-              style={{ fontSize: 14, fontWeight: 600, color: onFaqPage ? "#7C3AED" : "#4B5563", textDecoration: "none" }}
-            >
-              FAQs
-              {onFaqPage && (
-                <motion.span
-                  layoutId="nav-underline"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
-                  style={{ background: "linear-gradient(135deg, #0EA5E9, #7C3AED)" }}
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-            </Link>
+            {topLevelLinks.map((route) => {
+              const isActive = isActiveRoute(pathname, route.path);
+              return (
+                <Link
+                  key={route.path}
+                  to={route.path}
+                  className="relative pb-1 transition-colors"
+                  style={{ fontSize: 14, fontWeight: 600, color: isActive ? "#7C3AED" : "#4B5563", textDecoration: "none" }}
+                >
+                  {route.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
+                      style={{ background: "linear-gradient(135deg, #0EA5E9, #7C3AED)" }}
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* CTA BUTTON */}
@@ -195,9 +204,10 @@ export default function Navbar({ onOpenContact }: NavbarProps) {
               { id: "portfolio",    label: "Our Work", href: "/#portfolio" },
               { id: "testimonials", label: "Reviews",  href: "/#testimonials" },
               { id: "pricing",      label: "Pricing",  href: "/#pricing" },
-              { id: "faq",          label: "FAQs",     href: "/faq" },
+              ...topLevelLinks.map((route) => ({ id: route.path, label: route.label, href: route.path })),
             ].map(({ id, label, href }) => {
-              const isActive = id === "faq" ? onFaqPage : (!onFaqPage && activeSection === id);
+              const isTopLevelLink = topLevelLinks.some((route) => route.path === href);
+              const isActive = isTopLevelLink ? isActiveRoute(pathname, href) : (onHomepage && activeSection === id);
               return (
                 <Link
                   key={id}

@@ -491,7 +491,7 @@ export default function Hero({ onOpenContact }: HeroProps) {
               className="mb-8 max-w-xl"
               style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.75 }}
             >
-              We build professional, mobile-ready websites that drive results. No hassle, no hidden fees, delivered in under 7 days.
+              We build professional, mobile-ready websites for businesses across Delhi NCR — and clients in the USA, Canada & UAE. No hassle, no hidden fees, delivered in under 7 days.
             </motion.p>
 
             {/* Stats row */}
