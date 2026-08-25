@@ -39,4 +39,16 @@ export const faqs = [
     q: "Do you help with domain and hosting setup?",
     a: "Yes. If you don't have a domain or hosting yet, we'll guide you through purchasing them on trusted platforms. We can also manage the setup for you so you don't have to deal with the technical side.",
   },
+  {
+    q: "What should I look for before hiring a web designer or agency?",
+    a: "A relevant portfolio you can check live on your own phone, a clearly defined process (not \"send us your info\"), transparent pricing that separates the build from domain/hosting costs, clear ownership of the finished site, and real support after launch. We're happy to be evaluated against every one of these before you decide.",
+  },
+  {
+    q: "Should I hire a freelancer, a large agency, or a small studio?",
+    a: "Freelancers can be great value but quality varies and there's no backup if they're unavailable. Large agencies bring more overhead and cost. A small studio like ours sits in between: a defined process and team backup, without large-agency pricing or turnaround times.",
+  },
+  {
+    q: "Where's the best place to find a reliable web designer?",
+    a: "Freelance marketplaces (Upwork, Fiverr) offer the widest price range but need heavy vetting; local studios are easier to hold accountable and understand the local market; a strong referral from another business still happy with their site is one of the best signals available. Whichever route you take, always check live examples of past work yourself before committing.",
+  },
 ];
